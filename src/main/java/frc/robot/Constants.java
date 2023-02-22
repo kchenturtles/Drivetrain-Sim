@@ -49,9 +49,9 @@ public final class Constants {
     public static final double kS = 0.86841;
     public static final double kV = 4.009;
     public static final double kA = 2.6045;
-    public static final double kP = 0.0074093;
+    public static final double kP = 0.25889;
     public static final double kI = 0;
-    public static final double KD = 0;
+    public static final double KD = 0.13772;
     public static final double MAX_OFFSET_START = 1;
   }
 
@@ -248,8 +248,8 @@ public final class Constants {
     LinearSystemId.identifyDrivetrainSystem(
         PathConstants.kV,
         PathConstants.kA,
-        PathConstants.kV,
-        PathConstants.kA);
+        20,
+        10);
 
 // Example values only -- use what's on your physical robot!
 public static final DCMotor kDriveGearbox = DCMotor.getFalcon500(2);

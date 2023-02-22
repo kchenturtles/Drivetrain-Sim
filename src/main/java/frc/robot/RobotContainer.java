@@ -8,31 +8,18 @@ import com.pathplanner.lib.PathConstraints;
 import com.pathplanner.lib.PathPlanner;
 import com.pathplanner.lib.server.PathPlannerServer;
 import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Constants.ArmConstants;
-import frc.robot.Constants.ArmPositionConstants;
-import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.DriveConstants.DriveMotorCANIDs;
-import frc.robot.Constants.ElevatorConstants;
 import frc.robot.Constants.FieldConstants;
-import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.PathConstants;
 import frc.robot.Constants.UIConstants.DriverConstants;
-import frc.robot.Constants.UIConstants.OperatorConstants;
 import frc.robot.auton.AutonGenerator;
 import frc.robot.commands.drive.PathFollowCommand;
 import frc.robot.commands.drive.StopDriveCommand;
 import frc.robot.commands.drive.TankDriveCommand;
 import frc.robot.subsystems.DriveBase;
-import lobstah.stl.command.PeriodicConditionalCommand;
 import lobstah.stl.io.LobstahGamepad;
 
 /**
@@ -79,14 +66,20 @@ public class RobotContainer {
    * Use this method to run tasks that configure sendables and other smartdashboard items.
    */
   public void configureSmartDash() {
-    initialPosition.addOption("Furthest Right", 0);
-    initialPosition.addOption("Middle", 1);
-    initialPosition.addOption("Furthest Left", 2);
-    initialPosition.setDefaultOption("Furthest Right", 1);
+
+    initialPosition.addOption("0", 0);
+    initialPosition.addOption("1", 1);
+    initialPosition.addOption("2", 2);
+    initialPosition.addOption("3", 3);
+    initialPosition.addOption("4", 4);
+    initialPosition.addOption("5", 5);
+    initialPosition.addOption("6", 6);
+    initialPosition.addOption("7", 7);
+    initialPosition.addOption("8", 8);
+    initialPosition.setDefaultOption("0", 1);
     crossingPosition.addOption("Right of Platform", 0);
-    crossingPosition.addOption("Middle", 1);
     crossingPosition.addOption("Left of Platform", 2);
-    crossingPosition.setDefaultOption("Middle", 1);
+    crossingPosition.setDefaultOption("Left of Platform", 0);
     endingPosition.addOption("Towards Player Station", 3);
     endingPosition.addOption("Slightly Left", 2);
     endingPosition.addOption("Slightly Right", 1);

@@ -176,16 +176,16 @@ public class DriveBase extends SubsystemBase {
     m_drivetrainSimulator.update(0.020);
 
     simLeftFrontMotor.setIntegratedSensorRawPosition((int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getLeftPositionMeters()));
-    // System.out.println(m_drivetrainSimulator.getLeftPositionMeters());
-    // System.out.println(m_drivetrainSimulator.getRightPositionMeters());
+    System.out.println(m_drivetrainSimulator.getLeftVelocityMetersPerSecond());
+    System.out.println(m_drivetrainSimulator.getRightVelocityMetersPerSecond());
     simLeftBackMotor.setIntegratedSensorRawPosition((int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getLeftPositionMeters()));
-    simRightFrontMotor.setIntegratedSensorRawPosition((int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getRightPositionMeters()));
-    simRightBackMotor.setIntegratedSensorRawPosition((int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getRightPositionMeters()));
-    simLeftFrontMotor.setIntegratedSensorVelocity((int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getLeftVelocityMetersPerSecond()) / 10);
-    simLeftBackMotor.setIntegratedSensorVelocity((int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getLeftVelocityMetersPerSecond()) / 10);
-    simRightFrontMotor.setIntegratedSensorVelocity((int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getRightVelocityMetersPerSecond()) / 10);
-    simRightBackMotor.setIntegratedSensorVelocity((int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getRightVelocityMetersPerSecond()) / 10);
-    //m_gyroSim.setAngle(-m_drivetrainSimulator.getHeading().getDegrees());
+    simRightFrontMotor.setIntegratedSensorRawPosition(-(int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getRightPositionMeters()));
+    simRightBackMotor.setIntegratedSensorRawPosition(-(int) LobstahMath.distanceToNativeUnits(m_drivetrainSimulator.getRightPositionMeters()));
+    simLeftFrontMotor.setIntegratedSensorVelocity((int) LobstahMath.metersPerSecondToFalcon500Velocity(m_drivetrainSimulator.getLeftVelocityMetersPerSecond(), Units.inchesToMeters(3)));
+    simLeftBackMotor.setIntegratedSensorVelocity((int) LobstahMath.metersPerSecondToFalcon500Velocity(m_drivetrainSimulator.getLeftVelocityMetersPerSecond(), Units.inchesToMeters(3)));
+    simRightFrontMotor.setIntegratedSensorVelocity(-(int) LobstahMath.metersPerSecondToFalcon500Velocity(m_drivetrainSimulator.getRightVelocityMetersPerSecond(), Units.inchesToMeters(3)));
+    simRightBackMotor.setIntegratedSensorVelocity(-(int) LobstahMath.metersPerSecondToFalcon500Velocity(m_drivetrainSimulator.getRightVelocityMetersPerSecond(), Units.inchesToMeters(3)));
+    m_gyroSim.setAngle(-m_drivetrainSimulator.getHeading().getDegrees());
   }
 
   /**
